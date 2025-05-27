@@ -1,0 +1,19 @@
+.navbar {
+    background-color: var(--color-primary);
+}
+.logo{
+    color: var(--color-background);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+.nav-link {
+    color: var(--color-background);
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+.btn {
+    background-color: var(--color-secondary);
+    color: var(--color-background);
+    font-size: 1.2rem;
+    font-weight: 400;
+}

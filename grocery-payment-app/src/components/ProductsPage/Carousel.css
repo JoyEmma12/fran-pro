@@ -1,0 +1,44 @@
+.carousel {
+  background-color: #bad7f7;
+}
+.carousel-img {
+  width: 100%;
+  max-width: 500px;
+  height: 400px;
+  object-fit: contain;
+}
+
+.carousel-texts {
+  color: var(--color-text);
+}
+
+.carousel-texts h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.carousel-texts p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.carousel-btn {
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 1rem;
+  margin-top: 10rem;
+  /* color: var(color-secondary); */
+}
+.carousel-control-prev {
+  margin-left: 1.2rem;
+}
+.carousel-control-next {
+  margin-right: 1.2rem;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  color: black;
+}
