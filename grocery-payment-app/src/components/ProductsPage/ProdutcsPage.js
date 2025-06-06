@@ -4,6 +4,7 @@ import Carousel from "./Carousel";
 import VeggiesProducts from "./VeggiesProducts";
 import Subsection from "./Subsection";
 import OtherProducts from "./OtherProducts";
+import Footer from "./Footer";
 
 const ProdutcsPage = () => {
   return (
@@ -16,6 +17,7 @@ const ProdutcsPage = () => {
         <Subsection />
         <OtherProducts />
       </div>
+      <Footer />
     </div>
   );
 };
