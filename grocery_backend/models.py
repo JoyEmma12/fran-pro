@@ -2,14 +2,14 @@
 # This code defines the database models for a grocery store backend using Flask and SQLAlchemy.
 # It includes models for User, Product, and Order, each with their respective fields and relationships.
 
-from app import db  
+from app import db
 
 # the user model represents a user in the system, with fields for id, email, and password.
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(100), nullable=False)
-    
+
 
 
 
@@ -20,6 +20,13 @@ class Product(db.Model):
     price = db.Column(db.Float, nullable=False)
     image_url = db.Column(db.String(300), nullable=True)
 
+
+# the cart model represents a shopping cart in the grocery store, with fields for id, user_id, product_id, and quantity.
+class Cart(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    product_id = db.Column(db.Integer, db.ForeignKey('product.id'))
+    quantity = db.Column(db.Integer, default=1)
 
 
 # the class model represent an order in the grocery store with fields for id, user_id, total_amount, and payment_status.
