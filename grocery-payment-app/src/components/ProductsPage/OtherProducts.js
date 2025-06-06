@@ -4,7 +4,7 @@ import { productsdata } from "./productsdata";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 const OtherProducts = () => {
-  const [visibleCount, setVisibleCount] = useState(8); // show 8 initially
+  const [visibleCount, setVisibleCount] = useState(8);
   const [wishlist, setWishlist] = useState([]);
 
   const toggleWishlist = (id) => {
@@ -36,7 +36,7 @@ const OtherProducts = () => {
       <div className="row g-4">
         {visibleProducts.map((product) => (
           <div
-            className="col-6 col-sm-1 col-md-4 col-lg-3 d-flex align-items-stretch"
+            className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex align-items-stretch"
             key={product.id}>
             <div className="card product-card position-relative w-100 shadow-sm">
               <img

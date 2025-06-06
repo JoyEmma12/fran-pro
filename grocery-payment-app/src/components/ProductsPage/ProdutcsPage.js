@@ -5,21 +5,47 @@ import VeggiesProducts from "./VeggiesProducts";
 import Subsection from "./Subsection";
 import OtherProducts from "./OtherProducts";
 import Footer from "./Footer";
+import { AnimationOnScroll } from "react-animation-on-scroll";
+import "animate.css/animate.min.css";
 
-const ProdutcsPage = () => {
+const ProductsPage = () => {
   return (
     <div>
       <Nav />
       <Carousel />
-      {/* products section */}
+
       <div className="container">
-        <VeggiesProducts />
-        <Subsection />
-        <OtherProducts />
+        <AnimationOnScroll
+          animateIn="animate__fadeInUp"
+          offset={0}
+          delay={0}
+          duration={0.6}
+          animateOnce={true}>
+          <VeggiesProducts />
+        </AnimationOnScroll>
+
+        <AnimationOnScroll
+          animateIn="animate__fadeInUp"
+          offset={100}
+          delay={200}
+          duration={1}
+          animateOnce={true}>
+          <Subsection />
+        </AnimationOnScroll>
+
+        <AnimationOnScroll
+          animateIn="animate__fadeInUp"
+          offset={100}
+          delay={300}
+          duration={1}
+          animateOnce={true}>
+          <OtherProducts />
+        </AnimationOnScroll>
       </div>
+
       <Footer />
     </div>
   );
 };
 
-export default ProdutcsPage;
+export default ProductsPage;
