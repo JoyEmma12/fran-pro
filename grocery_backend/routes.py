@@ -29,7 +29,7 @@ def get_products():
     page = int(request.args.get('page', 1))
     per_page = int(request.args.get('per_page', 8))
     tag = request.args.get('tag')
-    sort = request.args.get('sort')  
+    sort = request.args.get('sort')
 
     query = Product.query
 
@@ -61,24 +61,30 @@ def get_products():
 # Add Item to Cart (and store in DB)
 @app.route('/cart', methods=['POST'])
 def add_to_cart():
-    data = request.get_json()
-    user_id = data.get('user_id')
-    product_id = data.get('product_id')
-    quantity = data.get('quantity', 1)
+    items = request.get_json()
 
-    if not user_id or not product_id:
-        return jsonify({"error": "User ID and Product ID are required"}), 400
+    if not isinstance(items, list):
+        return jsonify({"error": "Expected a list of cart items"}), 400
 
-    # Check if item already in cart, update quantity if so
-    existing = Cart.query.filter_by(user_id=user_id, product_id=product_id).first()
-    if existing:
-        existing.quantity += quantity
-    else:
-        new_item = Cart(user_id=user_id, product_id=product_id, quantity=quantity)
-        db.session.add(new_item)
+    for item in items:
+        try:
+            user_id = int(item.get('user_id'))
+            product_id = int(item.get('product_id'))
+            quantity = int(item.get('quantity', 1))
+        except (ValueError, TypeError):
+            continue  # Skip invalid items
+
+        # Fix: No limit/offset here!
+        existing_item = Cart.query.filter_by(user_id=user_id, product_id=product_id).first()
+
+        if existing_item:
+            existing_item.quantity += quantity
+        else:
+            new_item = Cart(user_id=user_id, product_id=product_id, quantity=quantity)
+            db.session.add(new_item)
 
     db.session.commit()
-    return jsonify({"message": "Item added to cart"})
+    return jsonify({"message": "Items added to cart successfully."})
 
 
 #  Create Order

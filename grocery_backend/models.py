@@ -22,11 +22,15 @@ class Product(db.Model):
 
 
 # the cart model represents a shopping cart in the grocery store, with fields for id, user_id, product_id, and quantity.
+
 class Cart(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    product_id = db.Column(db.Integer, db.ForeignKey('product.id'))
-    quantity = db.Column(db.Integer, default=1)
+    user_id = db.Column(db.Integer, nullable=False)
+    product_id = db.Column(db.Integer, nullable=False)
+    quantity = db.Column(db.Integer, nullable=False, default=1)
+
+    def __repr__(self):
+        return f'<Cart user_id={self.user_id} product_id={self.product_id} quantity={self.quantity}>'
 
 
 # the class model represent an order in the grocery store with fields for id, user_id, total_amount, and payment_status.
