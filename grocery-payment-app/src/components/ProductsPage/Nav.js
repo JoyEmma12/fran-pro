@@ -2,7 +2,7 @@ import React from "react";
 import { FaSearch } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
-import "./Nav.css"
+import "./Nav.css";
 
 const Nav = () => {
   return (
@@ -30,6 +30,11 @@ const Nav = () => {
           <li className="nav-item">
             <Link className="nav-link" to="/products">
               Our Products
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/cart">
+              Cart
             </Link>
           </li>
           <li className="nav-item">
