@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { allProductsData } from "./allProductsData";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Products.css";
 
-const Products = () => {
+const Products = ({ cartItems, setCartItems }) => {
+  const navigate = useNavigate();
   const [wishlist, setWishlist] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [sortOption, setSortOption] = useState("default");
@@ -56,6 +58,29 @@ const Products = () => {
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
+
+  const handleAddToCart = (product) => {
+    const exists = cartItems.find((item) => item.id === product.id);
+    const formattedProduct = {
+      ...product,
+      price: parseInt(product.productPrice.replace(",", "")), // normalize price
+    };
+
+    if (exists) {
+      setCartItems(
+        cartItems.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        )
+      );
+    } else {
+      setCartItems([...cartItems, { ...formattedProduct, quantity: 1 }]);
+    }
+
+    navigate("/cart");
+  };
+
 
   return (
     <div className="container py-5">
@@ -112,8 +137,10 @@ const Products = () => {
                     {product.producttag}
                   </span>
                 )}
-                <button className="btn btn-outline-success mt-auto">
-                  Quick Buy
+                <button
+                  className="btn btn-primary mt-auto"
+                  onClick={() => handleAddToCart(product)}>
+                  Add to Cart
                 </button>
               </div>
             </div>

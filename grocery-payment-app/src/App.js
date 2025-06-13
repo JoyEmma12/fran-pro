@@ -1,3 +1,4 @@
+// App.js
 import "./App.css";
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -7,16 +8,26 @@ import CartScreen from "./components/ProductsPage/Cartscreen";
 import CheckoutScreen from "./components/ProductsPage/CheckoutScreen";
 
 function App() {
-  const [cartItems, setCartItems] = useState([]);
-  const [loggedInUserId, setLoggedInUserId] = useState(1); // Replace 1 with real ID after login is built
+  const [cartItems, setCartItems] = useState([]); // ✅ shared cart state here
+  const [loggedInUserId, setLoggedInUserId] = useState(1); // Temporary user ID
 
   return (
     <Router>
-      {/* <ProdutcsPage /> */}
       <Routes>
         <Route path="/" element={<ProdutcsPage />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/cart" element={<CartScreen />} />
+        <Route
+          path="/products"
+          element={
+            <Products cartItems={cartItems} setCartItems={setCartItems} />
+          }
+        />
+
+        <Route
+          path="/cart"
+          element={
+            <CartScreen cartItems={cartItems} setCartItems={setCartItems} />
+          }
+        />
         <Route
           path="/checkout"
           element={

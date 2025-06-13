@@ -1,12 +1,22 @@
+// Updated CartPage.js
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const CartPage = ({ cartItems, onQuantityChange, onRemove, onCheckout }) => {
+  const navigate = useNavigate();
   const getTotal = () =>
     cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   return (
     <div className="container py-4">
-      <h3 className="text-center mb-4">Your Cart</h3>
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h3>Your Shopping Basket</h3>
+        <button
+          className="btn btn-outline-primary"
+          onClick={() => navigate("/products")}>
+          Continue Shopping
+        </button>
+      </div>
 
       {cartItems.length === 0 ? (
         <p className="text-center">Your cart is empty.</p>
@@ -16,15 +26,15 @@ const CartPage = ({ cartItems, onQuantityChange, onRemove, onCheckout }) => {
             <div key={item.id} className="card mb-3">
               <div className="card-body">
                 <div className="row align-items-center">
-                  <div className="col-4 col-md-2">
+                  <div className="col-3 col-md-2">
                     <img
-                      src={item.image}
-                      alt={item.name}
+                      src={item.productImage}
+                      alt={item.productName}
                       className="img-fluid rounded"
                     />
                   </div>
-                  <div className="col-8 col-md-4">
-                    <h5>{item.name}</h5>
+                  <div className="col-9 col-md-4">
+                    <h6>{item.productName}</h6>
                     <p className="mb-1">₦{item.price.toLocaleString()}</p>
                   </div>
                   <div className="col-12 col-md-3 d-flex align-items-center mt-2 mt-md-0">
@@ -45,12 +55,12 @@ const CartPage = ({ cartItems, onQuantityChange, onRemove, onCheckout }) => {
                       +
                     </button>
                   </div>
-                  <div className="col-6 col-md-2 mt-2 mt-md-0 text-center">
+                  <div className="col-md-2 text-center">
                     <strong>
                       ₦{(item.price * item.quantity).toLocaleString()}
                     </strong>
                   </div>
-                  <div className="col-6 col-md-1 text-end mt-2 mt-md-0">
+                  <div className="col-md-1 text-end">
                     <button
                       className="btn btn-danger btn-sm"
                       onClick={() => onRemove(item.id)}>

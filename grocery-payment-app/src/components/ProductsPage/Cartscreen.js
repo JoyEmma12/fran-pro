@@ -1,23 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import CartPage from "./CartPage";
 
-const CartScreen = () => {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      name: "Tomato",
-      price: 500,
-      quantity: 2,
-      image: "/images/tomato.jpg",
-    },
-    {
-      id: 2,
-      name: "Yam",
-      price: 1200,
-      quantity: 1,
-      image: "/images/yam.jpg",
-    },
-  ]);
+const CartScreen = ({ cartItems, setCartItems }) => {
+  const navigate = useNavigate();
 
   const onQuantityChange = (id, newQty) => {
     setCartItems((prev) =>
@@ -32,8 +18,7 @@ const CartScreen = () => {
   };
 
   const onCheckout = () => {
-    // You would typically send cartItems to the backend here
-    alert("Proceeding to checkout...");
+    navigate("/checkout"); // ✅ now this works
   };
 
   return (
