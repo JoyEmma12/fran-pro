@@ -1,8 +1,9 @@
 from app import app, db
 from models import User, Product, Order, Cart # Import necessary modules
-from flask import request, jsonify  # Flask request and jsonify for handling requests and responses
+from flask import request, jsonify, redirect  # Flask request and jsonify for handling requests and responses
 import requests # requests for making HTTP requests to external APIs
 import uuid # uuid for generating unique transaction references
+ # redirect for redirecting to the frontend after payment verification
 
 FLW_SECRET_KEY = 'FLWSECK_TEST-244373600dc320a50c58e7909ec55df0-X'
 
@@ -153,7 +154,7 @@ def start_payment():
 def flutterwave_verify():
     transaction_id = request.args.get('transaction_id')
     if not transaction_id:
-        return jsonify({'error': 'Transaction ID is required'}), 400
+        return redirect("http://localhost:3000/order-failed")
 
     url = f"https://api.flutterwave.com/v3/transactions/{transaction_id}/verify"
     headers = {
@@ -167,11 +168,35 @@ def flutterwave_verify():
     if result['status'] == 'success' and result['data']['status'] == 'successful':
         tx_ref = result['data']['tx_ref']
         order = Order.query.filter_by(tx_ref=tx_ref).first()
+
         if not order:
-            return jsonify({'error': 'Order not found'}), 404
+            return redirect("http://localhost:3000/order-failed")
 
         order.payment_status = 'paid'
         db.session.commit()
-        return jsonify({'message': 'Payment verified and order marked as paid.'}), 200
 
-    return jsonify({'error': 'Payment not successful', 'details': result}), 400
+        # ✅ FINAL REDIRECT
+        return redirect("http://localhost:3000/order-success")  # ← 🎯 Redirect instead of JSON
+
+    return redirect("http://localhost:3000/order-failed")  # Optional: handle failure
+
+
+
+@app.route('/order-details', methods=['GET'])
+def order_details():
+    tx_ref = request.args.get('tx_ref')
+    if not tx_ref:
+        return jsonify({'error': 'Missing tx_ref'}), 400
+
+    order = Order.query.filter_by(tx_ref=tx_ref).first()
+    if not order:
+        return jsonify({'error': 'Order not found'}), 404
+
+    return jsonify({
+        'customer_name': order.customer_name,
+        'customer_email': order.customer_email,
+        'customer_phone': order.customer_phone,
+        'total_amount': order.total_amount,
+        'tx_ref': order.tx_ref,
+        'status': order.payment_status
+    })

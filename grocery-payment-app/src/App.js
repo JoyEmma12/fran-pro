@@ -6,6 +6,7 @@ import ProdutcsPage from "./components/ProductsPage/ProdutcsPage";
 import Products from "./components/ProductsPage/Products";
 import CartScreen from "./components/ProductsPage/Cartscreen";
 import CheckoutScreen from "./components/ProductsPage/CheckoutScreen";
+import OrderSuccessScreen from "./components/ProductsPage/OrderSuccessScreen";
 
 function App() {
   const [cartItems, setCartItems] = useState([]); // ✅ shared cart state here
@@ -34,6 +35,7 @@ function App() {
             <CheckoutScreen cartItems={cartItems} userId={loggedInUserId} />
           }
         />
+        <Route path="/order-success" element={<OrderSuccessScreen />} />
       </Routes>
     </Router>
   );

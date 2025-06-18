@@ -1,6 +1,6 @@
 import React from "react";
 import CheckoutPage from "./CheckoutPage";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const CheckoutScreen = ({ cartItems, userId }) => {
 //   const navigate = useNavigate();

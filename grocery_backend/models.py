@@ -41,3 +41,7 @@ class Order(db.Model):
     total_amount = db.Column(db.Float, nullable=False)
     payment_status = db.Column(db.String(50), default="Pending")
     tx_ref = db.Column(db.String(100), unique=True, nullable=True)
+
+    customer_name = db.Column(db.String(100))
+    customer_email = db.Column(db.String(100))
+    customer_phone = db.Column(db.String(20))
