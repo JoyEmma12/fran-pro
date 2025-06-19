@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./OtherProducts.css";
 import { productsdata } from "./productsdata";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
-const OtherProducts = () => {
+const OtherProducts = ({ cartItems, setCartItems }) => {
+  const navigate = useNavigate();
   const [visibleCount, setVisibleCount] = useState(8);
   const [wishlist, setWishlist] = useState([]);
 
@@ -26,6 +28,24 @@ const OtherProducts = () => {
   };
 
   const visibleProducts = productsdata.slice(0, visibleCount);
+
+  const handleAddToCart = (product) => {
+    const exists = cartItems.find((item) => item.id === product.id);
+
+    if (exists) {
+      setCartItems(
+        cartItems.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        )
+      );
+    } else {
+      setCartItems([...cartItems, { ...product, quantity: 1 }]);
+    }
+
+    navigate("/cart");
+  };
 
   return (
     <div className="otherproducts-container container my-5">
@@ -68,7 +88,9 @@ const OtherProducts = () => {
                     {product.producttag}
                   </span>
                 )}
-                <button className="btn btn-outline-success w-100 mt-auto">
+                <button
+                  className="btn btn-outline-success w-100 mt-auto"
+                  onClick={() => handleAddToCart(product)}>
                   Quick Buy
                 </button>
               </div>

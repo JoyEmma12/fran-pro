@@ -8,7 +8,7 @@ import Footer from "./Footer";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import "animate.css/animate.min.css";
 
-const ProductsPage = () => {
+const ProductsPage = ({ cartItems, setCartItems }) => {
   return (
     <div>
       <Nav />
@@ -21,7 +21,7 @@ const ProductsPage = () => {
           delay={0}
           duration={0.6}
           animateOnce={true}>
-          <VeggiesProducts />
+          <VeggiesProducts cartItems={cartItems} setCartItems={setCartItems} />
         </AnimationOnScroll>
 
         <AnimationOnScroll
@@ -39,7 +39,7 @@ const ProductsPage = () => {
           delay={300}
           duration={1}
           animateOnce={true}>
-          <OtherProducts />
+          <OtherProducts cartItems={cartItems} setCartItems={setCartItems} />
         </AnimationOnScroll>
       </div>
 

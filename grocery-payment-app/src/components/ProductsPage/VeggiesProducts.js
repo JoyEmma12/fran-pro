@@ -1,4 +1,5 @@
-import React from 'react'
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./VeggiesProducts.css";
 import veggieimg1 from "../../assets/product17.jpeg";
 import veggieimg2 from "../../assets/product15.jpeg";
@@ -9,70 +10,84 @@ import veggiesimg6 from "../../assets/tomatoes.jpeg";
 import veggiesimg7 from "../../assets/ginger.jpeg";
 import veggiesimg8 from "../../assets/potatoes.jpeg";
 
-
-
-
 const veggieData = [
-    {
-        id:1,
-        name: "Fresh Green Cucumber",
-        price: 2500,
-        image: veggieimg1,
-        badge: "Newest Stock",
-    },
-    {
-        id:2,
-        name: "Organic Carrots",
-        price: 1500,
-        image: veggieimg2,
-        badge: "In Season",
+  {
+    id: 1,
+    name: "Fresh Green Cucumber",
+    price: 2500,
+    image: veggieimg1,
+    badge: "Newest Stock",
+  },
+  {
+    id: 2,
+    name: "Organic Carrots",
+    price: 1500,
+    image: veggieimg2,
+    badge: "In Season",
+  },
+  {
+    id: 3,
+    name: "Sweet Corn",
+    price: 2000,
+    image: veggieimg3,
+    badge: "Special Offer",
+  },
+  {
+    id: 4,
+    name: "Fresh Pineapple",
+    price: 3000,
+    image: veggiesimg4,
+    badge: "New Arrival",
+  },
+  {
+    id: 5,
+    name: "Green Beans",
+    price: 1800,
+    image: veggiesimg5,
+    badge: "New Arrival",
+  },
+  {
+    id: 6,
+    name: "Fresh Tomatoes",
+    price: 1200,
+    image: veggiesimg6,
+    badge: "Premium",
+  },
+  {
+    id: 7,
+    name: "Potatoes",
+    price: 1000,
+    image: veggiesimg8,
+    badge: "Best Seller",
+  },
+  {
+    id: 8,
+    name: "Fresh Ginger",
+    price: 800,
+    image: veggiesimg7,
+    badge: "New Arrival",
+  },
+];
 
-    },
-    {
-        id:3,
-        name: "Sweet Corn",
-        price: 2000,
-        image: veggieimg3,
-        badge: "Special Offer",
-    },
-    {
-      id:4,
-      name: "Fresh Pineapple",
-      price: 3000,
-      image: veggiesimg4,
-      badge: "New Arrival",
-    },
-    {
-      id:5,
-      name: "Green Beans",
-      price: 1800,
-      image: veggiesimg5,
-      badge: "New Arrival",
-    },
-    {
-      id:6,
-      name: "Fresh Tomatoes",
-      price: 1200,
-      image: veggiesimg6,
-      badge: "Premium ",
-    },
-    {
-      id:7,
-      name: "Potatoes",
-      price: 1000,
-      image: veggiesimg8,
-      badge: "Best Seller",
-    },
-    {
-      id:8,
-      name: "Fresh Ginger",
-      price: 800,
-      image: veggiesimg7,
-      badge: "New Arrival",
+const VeggiesProducts = ({ cartItems, setCartItems }) => {
+  const navigate = useNavigate();
+
+  const handleAddToCart = (veg) => {
+    const exists = cartItems.find((item) => item.id === veg.id);
+
+    if (exists) {
+      setCartItems(
+        cartItems.map((item) =>
+          item.id === veg.id ? { ...item, quantity: item.quantity + 1 } : item
+        )
+      );
+    } else {
+      setCartItems([...cartItems, { ...veg, quantity: 1 }]);
     }
 
-]
-const VeggiesProducts = () => {
+    navigate("/cart");
+  };
+
   return (
     <div className="container my-5">
       <h2 className="text-success fw-bold">
@@ -100,11 +115,14 @@ const VeggiesProducts = () => {
               <div className="card-body p-3">
                 <h5 className="card-title">{veg.name}</h5>
                 <p className="card-text text-success fw-semibold">
-                  ₦{veg.price}
+                  ₦{veg.price.toLocaleString()}
                 </p>
-                <span className="badge bg-success mb-2 position-absolute top-0 end-0">{veg.badge}</span>
-                {/* needs api call */}
-                <button className="btn btn-outline-success w-100">
+                <span className="badge bg-success mb-2 position-absolute top-0 end-0">
+                  {veg.badge}
+                </span>
+                <button
+                  className="btn btn-outline-success w-100"
+                  onClick={() => handleAddToCart(veg)}>
                   Add to Cart
                 </button>
               </div>
@@ -114,6 +132,6 @@ const VeggiesProducts = () => {
       </div>
     </div>
   );
-}
+};
 
-export default VeggiesProducts
+export default VeggiesProducts;

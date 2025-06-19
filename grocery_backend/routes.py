@@ -175,11 +175,9 @@ def flutterwave_verify():
         order.payment_status = 'paid'
         db.session.commit()
 
-        # ✅ FINAL REDIRECT
-        return redirect("http://localhost:3000/order-success")  # ← 🎯 Redirect instead of JSON
+        return redirect(f"http://localhost:3000/order-success?tx_ref={tx_ref}")
 
-    return redirect("http://localhost:3000/order-failed")  # Optional: handle failure
-
+    return redirect("http://localhost:3000/order-failed")
 
 
 @app.route('/order-details', methods=['GET'])

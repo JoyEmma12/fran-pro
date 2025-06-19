@@ -15,7 +15,12 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<ProdutcsPage />} />
+        <Route
+          path="/"
+          element={
+            <ProdutcsPage cartItems={cartItems} setCartItems={setCartItems} />
+          }
+        />
         <Route
           path="/products"
           element={
