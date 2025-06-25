@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
     const [formData, setFormData] = useState({ email: "", password: "" });
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -14,7 +16,7 @@ const LoginForm = () => {
       if (data.user_id) {
         localStorage.setItem("userId", data.user_id);
         alert("Login successful");
-        window.location.href = "/products";
+        navigate("/");
       } else {
         alert(data.error);
       }

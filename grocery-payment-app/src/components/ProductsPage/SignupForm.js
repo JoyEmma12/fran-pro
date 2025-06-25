@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 const SignupForm = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
 
   // Handle input changes
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-    // Handle form submission
+  // Handle form submission
   // This function sends a POST request to the server to register a new user
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,7 +21,7 @@ const SignupForm = () => {
     alert(data.message || data.error);
     if (data.user_id) {
       localStorage.setItem("userId", data.user_id);
-      Navigate("/products");
+      navigate("/products");
     }
   };
 
@@ -49,6 +49,14 @@ const SignupForm = () => {
         <button className="btn btn-success w-100" onClick={handleSubmit}>
           Register
         </button>
+        <p>
+          Already have an account?{" "}
+          <b
+            onClick={() => navigate("/login")} // ✅ wrap in function
+            style={{ cursor: "pointer", color: "green" }}>
+            Login
+          </b>
+        </p>
       </form>
     </div>
   );
