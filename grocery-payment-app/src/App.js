@@ -2,7 +2,7 @@
 import "./App.css";
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ProdutcsPage from "./components/ProductsPage/ProdutcsPage";
+import ProductsPage from "./components/ProductsPage/ProductsPage";
 import Products from "./components/ProductsPage/Products";
 import CartScreen from "./components/ProductsPage/Cartscreen";
 import CheckoutScreen from "./components/ProductsPage/CheckoutScreen";
@@ -10,7 +10,7 @@ import OrderSuccessScreen from "./components/ProductsPage/OrderSuccessScreen";
 
 function App() {
   const [cartItems, setCartItems] = useState([]); // ✅ shared cart state here
-  const [loggedInUserId, setLoggedInUserId] = useState(1); // Temporary user ID
+  const [loggedInUserId] = useState(1); // Temporary user ID
 
   return (
     <Router>
@@ -18,7 +18,7 @@ function App() {
         <Route
           path="/"
           element={
-            <ProdutcsPage cartItems={cartItems} setCartItems={setCartItems} />
+            <ProductsPage cartItems={cartItems} setCartItems={setCartItems} />
           }
         />
         <Route

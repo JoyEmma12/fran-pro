@@ -41,7 +41,16 @@ const OtherProducts = ({ cartItems, setCartItems }) => {
         )
       );
     } else {
-      setCartItems([...cartItems, { ...product, quantity: 1 }]);
+      const formattedProduct = {
+        ...product,
+        price: parseInt(
+          typeof product.productPrice === "string"
+            ? product.productPrice.replace(",", "")
+            : product.productPrice
+        ),
+        quantity: 1,
+      };
+      setCartItems([...cartItems, formattedProduct]);
     }
 
     navigate("/cart");
