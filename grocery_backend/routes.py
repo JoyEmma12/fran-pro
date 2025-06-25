@@ -24,6 +24,16 @@ def register_user():
     return jsonify({"message": "User registered successfully."})
 
 
+# User Login
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    user = User.query.filter_by(email=data['email'], password=data['password']).first()
+    if user:
+        return jsonify({"message": "Login successful", "user_id": user.id})
+    return jsonify({"error": "Invalid email or password"}), 401
+
+
 # Get Products (with pagination, sorting, filtering)
 @app.route('/products', methods=['GET'])
 def get_products():
@@ -102,6 +112,21 @@ def create_order():
     db.session.add(new_order)
     db.session.commit()
     return jsonify({"message": "Order created. Proceed to payment.", "order_id": new_order.id})
+
+#Get User Orders
+@app.route('/orders', methods=['GET'])
+def get_user_orders():
+    user_id = request.args.get('user_id')
+    if not user_id:
+        return jsonify({"error": "User ID required"}), 400
+
+    orders = Order.query.filter_by(user_id=user_id).all()
+    return jsonify([{
+        "id": o.id,
+        "total_amount": o.total_amount,
+        "payment_status": o.payment_status,
+        "tx_ref": o.tx_ref
+    } for o in orders])
 
 
 # Start Flutterwave Payment
