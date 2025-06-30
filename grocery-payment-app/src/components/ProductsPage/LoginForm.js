@@ -16,7 +16,7 @@ const LoginForm = () => {
       if (data.user_id) {
         localStorage.setItem("userId", data.user_id);
         alert("Login successful");
-        navigate("/");
+        navigate("/productspage");
       } else {
         alert(data.error);
       }

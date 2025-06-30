@@ -26,6 +26,7 @@ export const productsdata = [
     productDescription: "This is a description of Product 1.",
     productPrice: "1000",
     producttag: "10% off",
+    category: "Fruits",
   },
   {
     id: 2,
@@ -33,6 +34,8 @@ export const productsdata = [
     productName: "Product 2",
     productDescription: "This is a description of Product 2.",
     productPrice: "1500",
+    producttag: "20% off",
+    category: "Vegetables",
   },
   {
     id: 3,
@@ -41,6 +44,7 @@ export const productsdata = [
     productDescription: "This is a description of Product 3.",
     productPrice: "4500",
     producttag: "15% off",
+    category: "Dairy",
   },
   {
     id: 4,
@@ -49,6 +53,7 @@ export const productsdata = [
     productDescription: "This is a description of Product 3.",
     productPrice: "2400",
     producttag: "15% off",
+    category: "Snacks",
   },
   {
     id: 5,
@@ -57,6 +62,7 @@ export const productsdata = [
     productDescription: "This is a description of Product 3.",
     productPrice: "17000",
     producttag: "15% off",
+    category: "Beverages",
   },
   {
     id: 6,
@@ -65,6 +71,7 @@ export const productsdata = [
     productDescription: "This is a description of Product 3.",
     productPrice: "45000",
     producttag: "15% off",
+    category: "Bakery",
   },
   {
     id: 7,
@@ -73,6 +80,7 @@ export const productsdata = [
     productDescription: "This is a description of Product 3.",
     productPrice: "45000",
     producttag: "15% off",
+    category: "Fruits",
   },
   {
     id: 8,
@@ -81,6 +89,7 @@ export const productsdata = [
     productDescription: "This is a description of Product 3.",
     productPrice: "45000",
     producttag: "15% off",
+    category: "Vegetables",
   },
   {
     id: 9,
@@ -89,6 +98,7 @@ export const productsdata = [
     productDescription: "This is a description of Product 3.",
     productPrice: "45000",
     producttag: "15% off",
+    category: "Dairy",
   },
   {
     id: 10,
@@ -97,6 +107,7 @@ export const productsdata = [
     productDescription: "This is a description of Product 3.",
     productPrice: "45000",
     producttag: "15% off",
+    category: "Snacks",
   },
   {
     id: 11,
@@ -105,6 +116,7 @@ export const productsdata = [
     productDescription: "This is a description of Product 3.",
     productPrice: "45000",
     producttag: "15% off",
+    category: "Beverages",
   },
   {
     id: 12,
@@ -113,6 +125,7 @@ export const productsdata = [
     productDescription: "This is a description of Product 3.",
     productPrice: "45000",
     producttag: "15% off",
+    category: "Bakery",
   },
   {
     id: 13,
@@ -121,6 +134,7 @@ export const productsdata = [
     productDescription: "This is a description of Product 3.",
     productPrice: "45000",
     producttag: "15% off",
+    category: "Fruits",
   },
   {
     id: 14,
@@ -129,6 +143,7 @@ export const productsdata = [
     productDescription: "This is a description of Product 3.",
     productPrice: "45000",
     producttag: "15% off",
+    category: "Vegetables",
   },
   {
     id: 15,
@@ -137,6 +152,7 @@ export const productsdata = [
     productDescription: "This is a description of Product 3.",
     productPrice: "45000",
     producttag: "15% off",
+    category: "Dairy",
   },
   {
     id: 16,
@@ -145,6 +161,7 @@ export const productsdata = [
     productDescription: "This is a description of Product 3.",
     productPrice: "45000",
     producttag: "15% off",
+    category: "Snacks",
   },
   {
     id: 17,
@@ -153,6 +170,7 @@ export const productsdata = [
     productDescription: "This is a description of Product 3.",
     productPrice: "45000",
     producttag: "15% off",
+    category: "Beverages",
   },
   {
     id: 18,
@@ -161,5 +179,6 @@ export const productsdata = [
     productDescription: "This is a description of Product 3.",
     productPrice: "45000",
     producttag: "15% off",
+    category: "Bakery",
   },
 ];

@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 :root {
-    --color-primary: #4a90e2;
-    --color-secondary: #50e3c2;
-    --color-background: #f5f7fa;
-    --color-text: #333;
+    --primary-accent: #1c8f56;
+    --secondary:#e6f3ff;
+    /* --color-background: #f5f7fa; */
+    --color-text: #1b2e35;
     --color-text-light: #666;
-    --color-border: #e0e0e0;
+    --success-color: 	#28a745;
+    --cards-color: #ffffff;
 }
 body {
     font-family: 'Open Sans', sans-serif;

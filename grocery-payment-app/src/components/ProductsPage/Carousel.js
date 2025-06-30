@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import carouselimg1 from "../../assets/carouselimg1.png";
 import carouselimg2 from "../../assets/carouselimg2-removebg-preview.png";
 import carouselimg3 from "../../assets/drinks.png";
@@ -28,23 +29,30 @@ const carouselData = [
 ];
 
 const Carousel = () => {
+  const navigate = useNavigate();
+
   return (
     <div
       id="carouselExampleRide"
-      className="carousel slide "
+      className="carousel slide"
       data-bs-ride="carousel">
-      <div className="carousel-inner ">
+      <div className="carousel-inner">
         {carouselData.map((item, index) => (
           <div
             key={item.id}
             className={`carousel-item ${index === 0 ? "active" : ""}`}>
-            <div className="container">
-              <div className="row align-items-center p-2">
-                <div className="col-md-6 carousel-texts">
+            <div className="container py-5">
+              <div className="row align-items-center">
+                <div className="col-md-6 text-center text-md-start carousel-texts">
                   <h2>{item.title}</h2>
                   <p>{item.description}</p>
+                  <button
+                    className="btn btn-primary mt-3 cta-btn"
+                    onClick={() => navigate("/products")}>
+                    Shop Now
+                  </button>
                 </div>
-                <div className="col-md-6 text-center">
+                <div className="col-md-6 text-center mt-4 mt-md-0">
                   <img
                     src={item.img}
                     className="carousel-img"

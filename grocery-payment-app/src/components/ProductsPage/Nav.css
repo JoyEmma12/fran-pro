@@ -1,19 +1,71 @@
+/* Navbar base styling */
 .navbar {
-    background-color: var(--color-primary);
-}
-.logo{
-    color: var(--color-background);
+    background-color: var(--primary-accent);
+    padding: 1rem 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  /* Logo */
+  .logo {
+    color: var(--color-text);
     font-size: 1.8rem;
     font-weight: 700;
-}
-.nav-link {
-    color: var(--color-background);
-    font-size: 1.2rem;
-    font-weight: 400;
-}
-.btn {
-    background-color: var(--color-secondary);
-    color: var(--color-background);
-    font-size: 1.2rem;
-    font-weight: 400;
-}
+    text-decoration: none;
+  }
+
+  /* Nav links */
+  .nav-link {
+    color: var(--secondary);
+    font-size: 1.1rem;
+    margin-right: 1rem;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  /* Search input and button */
+  form.d-flex input[type="search"] {
+    border-radius: 0.375rem;
+    border: none;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.95rem;
+    outline: none;
+  }
+
+  form.d-flex input[type="search"]::placeholder {
+    font-size: 0.9rem;
+  }
+
+  form.d-flex .btn {
+    background-color: var(--secondary);
+    color: var(--primary-accent);
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+    margin-left: 0.5rem;
+    border: none;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  form.d-flex .btn:hover {
+    background-color: #1e874b; /* darker green tone */
+  }
+
+  /* Mobile toggler icon */
+  .navbar-toggler {
+    border: none;
+  }
+
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255,255,255,0.9)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }

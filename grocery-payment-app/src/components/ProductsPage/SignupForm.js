@@ -21,7 +21,7 @@ const SignupForm = () => {
     alert(data.message || data.error);
     if (data.user_id) {
       localStorage.setItem("userId", data.user_id);
-      navigate("/products");
+      navigate("/productspage");
     }
   };
 

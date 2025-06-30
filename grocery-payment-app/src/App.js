@@ -10,6 +10,9 @@ import OrderSuccessScreen from "./components/ProductsPage/OrderSuccessScreen";
 import SignupForm from "./components/ProductsPage/SignupForm";
 import LoginForm from "./components/ProductsPage/LoginForm";
 import OrderHistory from "./components/ProductsPage/OrderHistory";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 function App() {
   const [cartItems, setCartItems] = useState([]); // ✅ shared cart state here
@@ -18,10 +21,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/register" element={<SignupForm />} />
+        <Route path="/" element={<SignupForm />} />
         <Route path="/login" element={<LoginForm />} />
         <Route
-          path="/"
+          path="/productspage"
           element={
             <ProductsPage cartItems={cartItems} setCartItems={setCartItems} />
           }
@@ -48,6 +51,16 @@ function App() {
         <Route path="/order-success" element={<OrderSuccessScreen />} />
         <Route path="/orders" element={<OrderHistory />} />
       </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </Router>
   );
 }

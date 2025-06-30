@@ -1,13 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import "react-toastify/dist/ReactToastify.css";
 import "./OtherProducts.css";
 import { productsdata } from "./productsdata";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 const OtherProducts = ({ cartItems, setCartItems }) => {
   const navigate = useNavigate();
   const [visibleCount, setVisibleCount] = useState(8);
   const [wishlist, setWishlist] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  useEffect(() => {
+    AOS.init({ duration: 800 });
+  }, []);
+
+  const categories = [
+    "All",
+    ...new Set(productsdata.map((p) => p.category).filter(Boolean)),
+  ];
 
   const toggleWishlist = (id) => {
     setWishlist((prev) =>
@@ -16,8 +30,8 @@ const OtherProducts = ({ cartItems, setCartItems }) => {
   };
 
   const handleLoadMore = () => {
-    if (visibleCount + 4 >= productsdata.length) {
-      setVisibleCount(productsdata.length);
+    if (visibleCount + 4 >= filteredProducts.length) {
+      setVisibleCount(filteredProducts.length);
     } else {
       setVisibleCount((prev) => prev + 4);
     }
@@ -26,8 +40,6 @@ const OtherProducts = ({ cartItems, setCartItems }) => {
   const handleSeeLess = () => {
     setVisibleCount(8);
   };
-
-  const visibleProducts = productsdata.slice(0, visibleCount);
 
   const handleAddToCart = (product) => {
     const exists = cartItems.find((item) => item.id === product.id);
@@ -45,7 +57,7 @@ const OtherProducts = ({ cartItems, setCartItems }) => {
         ...product,
         price: parseInt(
           typeof product.productPrice === "string"
-            ? product.productPrice.replace(",", "")
+            ? product.productPrice.replace(/,/g, "")
             : product.productPrice
         ),
         quantity: 1,
@@ -53,8 +65,16 @@ const OtherProducts = ({ cartItems, setCartItems }) => {
       setCartItems([...cartItems, formattedProduct]);
     }
 
+    toast.success(`${product.productName} added to cart!`);
     navigate("/cart");
   };
+
+  const filteredProducts =
+    selectedCategory === "All"
+      ? productsdata
+      : productsdata.filter((p) => p.category === selectedCategory);
+
+  const visibleProducts = filteredProducts.slice(0, visibleCount);
 
   return (
     <div className="otherproducts-container container my-5">
@@ -62,11 +82,25 @@ const OtherProducts = ({ cartItems, setCartItems }) => {
         <h3 className="fw-bold">Recommended For You</h3>
       </div>
 
+      <div className="mb-4 d-flex flex-wrap gap-2">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            className={`btn btn-sm ${
+              selectedCategory === cat ? "btn-success" : "btn-outline-success"
+            }`}
+            onClick={() => setSelectedCategory(cat)}>
+            {cat}
+          </button>
+        ))}
+      </div>
+
       <div className="row g-4">
         {visibleProducts.map((product) => (
           <div
             className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex align-items-stretch"
-            key={product.id}>
+            key={product.id}
+            data-aos="fade-up">
             <div className="card product-card position-relative w-100 shadow-sm">
               <img
                 src={product.productImage}
@@ -75,7 +109,8 @@ const OtherProducts = ({ cartItems, setCartItems }) => {
               />
               <div
                 className="wishlist-icon position-absolute top-0 end-0 p-2"
-                onClick={() => toggleWishlist(product.id)}>
+                onClick={() => toggleWishlist(product.id)}
+                data-aos="zoom-in">
                 {wishlist.includes(product.id) ? (
                   <AiFillHeart color="red" size={24} />
                 ) : (
@@ -109,7 +144,7 @@ const OtherProducts = ({ cartItems, setCartItems }) => {
       </div>
 
       <div className="text-center mt-4">
-        {visibleCount < productsdata.length ? (
+        {visibleCount < filteredProducts.length ? (
           <button className="btn btn-success" onClick={handleLoadMore}>
             Load More
           </button>

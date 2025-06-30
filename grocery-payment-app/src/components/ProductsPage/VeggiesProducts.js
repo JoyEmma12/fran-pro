@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import "./VeggiesProducts.css";
+
 import veggieimg1 from "../../assets/product17.jpeg";
 import veggieimg2 from "../../assets/product15.jpeg";
 import veggieimg3 from "../../assets/product13.jpeg";
@@ -72,6 +75,10 @@ const veggieData = [
 const VeggiesProducts = ({ cartItems, setCartItems }) => {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    AOS.init({ duration: 800 });
+  }, []);
+
   const handleAddToCart = (veg) => {
     const exists = cartItems.find((item) => item.id === veg.id);
 
@@ -89,39 +96,44 @@ const VeggiesProducts = ({ cartItems, setCartItems }) => {
   };
 
   return (
-    <div className="container my-5">
-      <h2 className="text-success fw-bold">
-        Farm-Fresh Vegetables, Just a Click Away
-      </h2>
-      <p className="text-muted fs-5">
-        Discover a colorful variety of hand-picked, nutrient-rich vegetables
-        delivered fresh from local farms to your doorstep.
-      </p>
-      <p className="text-secondary mb-4">
-        From leafy greens to root vegetables, our selection is sourced daily to
-        ensure the best in flavor and nutrition. Eat clean, eat fresh, and make
-        every meal healthier.
-      </p>
+    <div className="container my-5 veggies-section">
+      <div className="text-center mb-4">
+        <h2 className="text-success fw-bold">
+          Farm-Fresh Vegetables, Just a Click Away
+        </h2>
+        <p className="text-muted fs-5">
+          Discover a colorful variety of hand-picked, nutrient-rich vegetables
+          delivered fresh from local farms to your doorstep.
+        </p>
+        <p className="text-secondary">
+          From leafy greens to root vegetables, our selection is sourced daily
+          to ensure the best in flavor and nutrition.
+        </p>
+      </div>
 
-      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 mb-5">
-        {veggieData.map((veg) => (
-          <div className="col" key={veg.id}>
+      <div className="row g-4">
+        {veggieData.map((veg, index) => (
+          <div
+            className="col-12 col-sm-6 col-md-4 col-lg-3"
+            key={veg.id}
+            data-aos="fade-up"
+            data-aos-delay={index * 100}>
             <div className="card veggie-card h-100 shadow-sm position-relative">
               <img
                 src={veg.image}
                 className="card-img-top veggie-img"
                 alt={veg.name}
               />
-              <div className="card-body p-3">
+              <span className="badge bg-success position-absolute top-0 end-0 m-2">
+                {veg.badge}
+              </span>
+              <div className="card-body d-flex flex-column">
                 <h5 className="card-title">{veg.name}</h5>
                 <p className="card-text text-success fw-semibold">
                   ₦{veg.price.toLocaleString()}
                 </p>
-                <span className="badge bg-success mb-2 position-absolute top-0 end-0">
-                  {veg.badge}
-                </span>
                 <button
-                  className="btn btn-outline-success w-100"
+                  className="btn veggies-btn mt-auto"
                   onClick={() => handleAddToCart(veg)}>
                   Add to Cart
                 </button>

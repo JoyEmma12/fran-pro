@@ -1,4 +1,6 @@
 import React from "react";
+import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+
 import "./Footer.css"; // Ensure you create this CSS file
 
 const Footer = () => {
@@ -35,19 +37,20 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-
           {/* Social Media */}
           <div className="col-md-4 mb-3">
             <h6>Follow Us</h6>
-            <a href="https://facebook.com" className="text-muted me-2">
-              Facebook
-            </a>
-            <a href="https://twitter.com" className="text-muted me-2">
-              Twitter
-            </a>
-            <a href="https://instagram.com" className="text-muted">
-              Instagram
-            </a>
+            <div className="social-icons d-flex">
+              <a href="https://facebook.com" className="text-muted me-3">
+                <FaFacebookF size={20} />
+              </a>
+              <a href="https://twitter.com" className="text-muted me-3">
+                <FaTwitter size={20} />
+              </a>
+              <a href="https://instagram.com" className="text-muted">
+                <FaInstagram size={20} />
+              </a>
+            </div>
           </div>
         </div>
 
