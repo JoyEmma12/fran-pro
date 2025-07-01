@@ -25,7 +25,7 @@ const ProductsPage = ({ cartItems, setCartItems }) => {
 
 
           <OtherProducts cartItems={cartItems} setCartItems={setCartItems} />
-        
+
       </div>
 
       <Footer />

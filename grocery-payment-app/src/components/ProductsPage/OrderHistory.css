@@ -1,0 +1,30 @@
+.order-history {
+    background-color: var(--secondary);
+    padding-bottom: 2rem;
+  }
+
+  .order-item {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    transition: background-color 0.3s ease;
+  }
+
+  .order-item:hover {
+    background-color: #f1f3f5;
+  }
+
+  .badge.bg-success {
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 576px) {
+    .order-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .badge {
+      align-self: flex-end;
+    }
+  }

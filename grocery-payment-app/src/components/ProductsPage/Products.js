@@ -4,6 +4,8 @@ import { allProductsData } from "./allProductsData";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Products.css";
+import { toast } from "react-toastify";
+
 
 const Products = ({ cartItems, setCartItems }) => {
   const navigate = useNavigate();
@@ -79,6 +81,7 @@ const Products = ({ cartItems, setCartItems }) => {
     }
 
     navigate("/cart");
+    toast.success(`${product.productName} added to cart!`);
   };
 
 
@@ -138,7 +141,7 @@ const Products = ({ cartItems, setCartItems }) => {
                   </span>
                 )}
                 <button
-                  className="btn btn-primary mt-auto"
+                  className="btn addtocart-btn mt-auto"
                   onClick={() => handleAddToCart(product)}>
                   Add to Cart
                 </button>
