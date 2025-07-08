@@ -28,7 +28,7 @@ const Subsection = () => {
               />
             </div>
             <div className="text-section text-center text-lg-end">
-              <span className="badge bg-primary mb-2">New Arrival</span>
+              <span className="badge bg-success mb-2">New Arrival</span>
               <h3>Your Everyday Essentials, All in One Place</h3>
               <p>
                 Shop smarter with our curated range of quality groceries, fresh

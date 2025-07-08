@@ -1,50 +1,57 @@
 .veggies-section {
-    background-color: #fff;
-    padding: 2rem 1rem;
-    border-radius: 10px;
-  }
+  background-color: #fff;
+  padding: 2rem 1rem;
+  border-radius: 10px;
+}
 
-  .veggie-card {
-    border: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
+.veggie-card {
+  position: relative;
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-  .veggie-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-  }
+.veggie-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
 
-  .veggie-img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-  }
+.veggie-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
 
+.card-title {
+  font-weight: 600;
+  font-size: 1rem;
+}
 
-  .card-title {
-    font-weight: 600;
-    font-size: 1rem;
-  }
+.veggies-badge {
+  padding: 0.4rem 0.6rem;
+  border-radius: 5px;
+  background-color: var(--success-color);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  position: absolute;
+  /* top: 30px; */
+  /* left: 1px; */
+  width: fit-content;
+}
 
-  .badge {
-    padding: 0.4rem 0.6rem;
-    font-size: 0.75rem;
-    font-weight: 500;
-  }
-
-  .veggies-btn {
-    background-color: var(--primary-accent);
-    color: #fff;
-    border: none;
-    font-weight: 600;
-    padding: 0.6rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-  }
-  .veggies-btn:hover {
-    background-color: #157344;
-    color: #fff;
-  }
+.veggies-btn {
+  background-color: var(--primary-accent);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+.veggies-btn:hover {
+  background-color: #157344;
+  color: #fff;
+}

@@ -118,7 +118,7 @@ const OtherProducts = ({ cartItems, setCartItems }) => {
                 )}
               </div>
               <div className="card-body d-flex flex-column justify-content-between">
-                <h6 className="card-title fw-semibold">
+                <h6 className="card-title fw-bold">
                   {product.productName}
                 </h6>
                 <p className="card-text small text-muted">

@@ -6,6 +6,7 @@
   transition: transform 0.3s ease;
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
 }
 
 .product-card:hover {
@@ -26,9 +27,16 @@
 }
 
 .card-title {
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin-bottom: 0.5rem;
-  font-weight: 600;
+  font-weight: 700;
+  color: var(--primary-accent);
+}
+.card-text {
+  font-size: 0.89rem;
+  color: var(--color-text-light);
+  /* margin-bottom: 0.5rem; */
+  /* height: 40px; */
 }
 
 .card-price {
@@ -42,6 +50,14 @@
 
 .card-body {
   padding: 0.85rem;
+}
+.badge {
+  font-size: 0.9rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 5px;
+  position: absolute;
+  top: 1px;
+  left: 1px;
 }
 
 @media (max-width: 576px) {

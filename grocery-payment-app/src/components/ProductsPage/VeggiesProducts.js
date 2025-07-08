@@ -124,7 +124,7 @@ const VeggiesProducts = ({ cartItems, setCartItems }) => {
                 className="card-img-top veggie-img"
                 alt={veg.name}
               />
-              <span className="badge bg-success position-absolute top-0 end-0 m-2">
+              <span className="veggies-badge bg-success position-absolute top-0 end-0 m-2">
                 {veg.badge}
               </span>
               <div className="card-body d-flex flex-column">
