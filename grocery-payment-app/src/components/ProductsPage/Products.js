@@ -87,7 +87,7 @@ const Products = ({ cartItems, setCartItems }) => {
 
   return (
     <div className="container py-5">
-      <h2 className="mb-4 fw-bold">All Products</h2>
+      <h2 className="mb-4 fw-bold" onClick={() => navigate("/productspage")}>All Products</h2>
 
       <div className="d-flex justify-content-between mb-3">
         <select

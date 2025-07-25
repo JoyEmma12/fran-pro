@@ -16,58 +16,58 @@ import veggiesimg8 from "../../assets/potatoes.jpeg";
 const veggieData = [
   {
     id: 1,
-    name: "Fresh Green Cucumber",
+    productName: "Fresh Green Cucumber",
     price: 2500,
-    image: veggieimg1,
+    productImage: veggieimg1,
     badge: "Newest Stock",
   },
   {
     id: 2,
-    name: "Organic Carrots",
+    productName: "Organic Carrots",
     price: 1500,
-    image: veggieimg2,
+    productImage: veggieimg2,
     badge: "In Season",
   },
   {
     id: 3,
-    name: "Sweet Corn",
+    productName: "Sweet Corn",
     price: 2000,
-    image: veggieimg3,
+    productImage: veggieimg3,
     badge: "Special Offer",
   },
   {
     id: 4,
-    name: "Fresh Pineapple",
+    productName: "Fresh Pineapple",
     price: 3000,
-    image: veggiesimg4,
+    productImage: veggiesimg4,
     badge: "New Arrival",
   },
   {
     id: 5,
-    name: "Green Beans",
+    productName: "Green Beans",
     price: 1800,
-    image: veggiesimg5,
+    productImage: veggiesimg5,
     badge: "New Arrival",
   },
   {
     id: 6,
-    name: "Fresh Tomatoes",
+    productName: "Fresh Tomatoes",
     price: 1200,
-    image: veggiesimg6,
+    productImage: veggiesimg6,
     badge: "Premium",
   },
   {
     id: 7,
-    name: "Potatoes",
+    productName: "Potatoes",
     price: 1000,
-    image: veggiesimg8,
+    productImage: veggiesimg8,
     badge: "Best Seller",
   },
   {
     id: 8,
-    name: "Fresh Ginger",
+    productName: "Fresh Ginger",
     price: 800,
-    image: veggiesimg7,
+    productImage: veggiesimg7,
     badge: "New Arrival",
   },
 ];
@@ -112,29 +112,29 @@ const VeggiesProducts = ({ cartItems, setCartItems }) => {
       </div>
 
       <div className="row g-4">
-        {veggieData.map((veg, index) => (
+        {veggieData.map((product, index) => (
           <div
             className="col-12 col-sm-6 col-md-4 col-lg-3"
-            key={veg.id}
+            key={product.id}
             data-aos="fade-up"
             data-aos-delay={index * 100}>
             <div className="card veggie-card h-100 shadow-sm position-relative">
               <img
-                src={veg.image}
+                src={product.productImage}
                 className="card-img-top veggie-img"
-                alt={veg.name}
+                alt={product.productName}
               />
               <span className="veggies-badge bg-success position-absolute top-0 end-0 m-2">
-                {veg.badge}
+                {product.badge}
               </span>
               <div className="card-body d-flex flex-column">
-                <h5 className="card-title">{veg.name}</h5>
+                <h5 className="card-title">{product.productName}</h5>
                 <p className="card-text text-success fw-semibold">
-                  ₦{veg.price.toLocaleString()}
+                  ₦{product.price.toLocaleString()}
                 </p>
                 <button
                   className="btn veggies-btn mt-auto"
-                  onClick={() => handleAddToCart(veg)}>
+                  onClick={() => handleAddToCart(product)}>
                   Add to Cart
                 </button>
               </div>

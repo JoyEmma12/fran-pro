@@ -11,7 +11,7 @@ const CartPage = ({ cartItems, onQuantityChange, onRemove, onCheckout }) => {
   return (
     <div className="cart-container container py-4">
       <div className="d-flex justify-content-between align-items-center mb-4 flex-wrap">
-        <h3 className="cart-heading mb-2 mb-md-0">🛒 Your Shopping Basket</h3>
+        <h3 className="cart-heading mb-2 mb-md-0" onClick={() => navigate("/productspage")}>🛒 Your Shopping Basket</h3>
         <button
           className="btn shopping-btn"
           onClick={() => navigate("/products")}>
